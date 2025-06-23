@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  initiator:
+    build:
+      context: ./initiator
+      dockerfile: Dockerfile
+    container_name: ikev2_initiator
+    volumes:
+      # - ./initiator/config:/etc/ipsec.d
+      - ./initiator/config/ipsec.conf:/etc/ipsec.conf
+      - ./initiator/config/ipsec.secrets:/etc/ipsec.secrets
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    privileged: true
+    networks:
+      ikev2net:
+        ipv4_address: 10.0.0.2
+
+  responder:
+    build:
+      context: ./responder
+      dockerfile: Dockerfile
+    container_name: ikev2_responder
+    volumes:
+      # - ./responder/config:/etc/ipsec.d
+      - ./responder/config/ipsec.conf:/etc/ipsec.conf
+      - ./responder/config/ipsec.secrets:/etc/ipsec.secrets
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    privileged: true
+    networks:
+      ikev2net:
+        ipv4_address: 10.0.0.3
+
+networks:
+  ikev2net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/24

@@ -43,3 +43,12 @@
    1. `docker logs -f [ike_initiator, ike_responder]`.
 2. 查看 ispec status.
    1. `docker exec -it [ike_initiator, ike_responder] swanctl --list-sas`.
+
+## 查看抓包
+
+在 wireshark 中导入密钥文件,
+
+1. 将 *capture/keys/esp_sa* 复制到 *C:\Users\{username}\AppData\Roaming\Wiresharkl\esp_sa* (windows), 以解密 ESP payload;
+2. 将 *capture/keys/ikev2_decryption_table* 复制到 *C:\Users\{username}\AppData\Roaming\Wireshark\ikev2_decryption_table* (windows), 以解密 ike 数据包.
+
+打开对应的 pcap 文件即可自动解密.

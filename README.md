@@ -11,7 +11,7 @@
 2. 启动 docker compose;
    1. `docker compose up -d`
 3. 抓包.
-   1. TODO
+   1. 抓包将自动开始
 
 如果在 build 的过程中出现了许多名为 `<none>` 的镜像, 可以使用下面的指令一并删除.
 

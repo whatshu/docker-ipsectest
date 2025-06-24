@@ -3,6 +3,8 @@ set -e
 
 exec > /usr/capture/entrypoint.log 2>&1
 
+journalctl -f > /usr/capture/syslog.txt &
+
 # 生成 Wireshark ESP 解密密钥文件
 generate_wireshark_keys() {
   outfile="/usr/capture/wireshark.keys"
@@ -59,6 +61,8 @@ generate_wireshark_keys
 
 # 触发 rekey
 swanctl --rekey --child=myconn
+
+swanctl --list-sas
 
 sleep 30
 

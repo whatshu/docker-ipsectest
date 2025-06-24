@@ -10,6 +10,7 @@ services:
         ipv4_address: 10.200.200.2
     volumes:
       - ./initiator/swanctl.conf:/etc/swanctl/conf.d/swanctl.conf:ro
+      - ./initiator/strongswan.conf:/etc/strongswan.conf:ro
       - ./initiator/capture:/usr/capture
 
   responder:
@@ -23,6 +24,7 @@ services:
         ipv4_address: 10.200.200.3
     volumes:
       - ./responder/swanctl.conf:/etc/swanctl/conf.d/swanctl.conf:ro
+      - ./responder/strongswan.conf:/etc/strongswan.conf:ro
       - ./responder/capture:/usr/capture
 
 networks:

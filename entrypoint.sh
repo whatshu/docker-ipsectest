@@ -22,4 +22,3 @@ swanctl --initiate --child=myconn
 
 # 输出状态，持续打印日志
 swanctl --list-sas
-tail --pid="$CHARON_PID" -f /var/log/syslog

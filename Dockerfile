@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     wget build-essential pkg-config \
     libgmp-dev libssl-dev libcap-ng-dev libcurl4-openssl-dev \
-    iproute2 iptables iputils-ping ca-certificates \
+    iproute2 iptables iputils-ping ca-certificates tcpdump \
   && rm -rf /var/lib/apt/lists/*
 
 ENV PATH="/usr/sbin:${PATH}"
@@ -19,6 +19,10 @@ RUN wget https://download.strongswan.org/strongswan-6.0.1.tar.bz2 \
                 --enable-swanctl --enable-openssl --enable-eap-mschapv2 \
  && make -j"$(nproc)" \
  && make install
+
+# Clean up source files
+# RUN cd /opt \
+#  && rm -rf strongswan-6.0.1
 
 # 复制通用的启动脚本
 COPY entrypoint.sh /usr/local/bin/

@@ -12,6 +12,8 @@ services:
       - ./initiator/swanctl.conf:/etc/swanctl/conf.d/swanctl.conf:ro
       - ./initiator/strongswan.conf:/etc/strongswan.conf:ro
       - ./initiator/capture:/usr/capture
+      - ./initiator/setup-test.sh:/usr/bin/setup-test.sh
+      - ./initiator/rekey-test.sh:/usr/bin/rekey-test.sh
 
   responder:
     build: .
@@ -26,6 +28,8 @@ services:
       - ./responder/swanctl.conf:/etc/swanctl/conf.d/swanctl.conf:ro
       - ./responder/strongswan.conf:/etc/strongswan.conf:ro
       - ./responder/capture:/usr/capture
+      - ./responder/setup-test.sh:/usr/bin/setup-test.sh
+      - ./responder/rekey-test.sh:/usr/bin/rekey-test.sh
 
 networks:
   vpn-net:

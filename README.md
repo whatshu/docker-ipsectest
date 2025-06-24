@@ -2,6 +2,8 @@
 
 使用 docker compose 自动化搭建 ipsec 测试环境, 并抓包.
 
+输出的日志/pcap 文件都被保存在 ./[initiator, responder]/capture 下.
+
 ## 开始测试
 
 开始测试需要执行下面的几个步骤, 在没有特殊说明的情况下, 下面的指令均在 *.* 目录下执行.
@@ -12,6 +14,10 @@
    1. `docker compose up -d`
 3. 抓包.
    1. 抓包将自动开始
+
+使用下面的指令停止, 构建, 重新开始测试.
+
+`docker compose down && docker compose build && docker compose up -d`
 
 如果在 build 的过程中出现了许多名为 `<none>` 的镜像, 可以使用下面的指令一并删除.
 

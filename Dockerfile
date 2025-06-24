@@ -17,6 +17,7 @@ RUN wget https://download.strongswan.org/strongswan-6.0.1.tar.bz2 \
  && cd strongswan-6.0.1 \
  && ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
                 --enable-swanctl --enable-openssl --enable-eap-mschapv2 \
+                --enable-save-keys \
  && make -j"$(nproc)" \
  && make install
 

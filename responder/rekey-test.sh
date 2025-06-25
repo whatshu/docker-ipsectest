@@ -1,5 +1,8 @@
 #!/bin/bash
 
+LOG_FILE="/usr/capture/rekey-test.log"
+exec > "$LOG_FILE" 2>&1
+
 echo 'running rekey test'
 
 # normal ping

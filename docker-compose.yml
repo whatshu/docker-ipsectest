@@ -14,6 +14,7 @@ services:
       - ./initiator/capture:/usr/capture
       - ./initiator/setup-test.sh:/usr/bin/setup-test.sh
       - ./initiator/rekey-test.sh:/usr/bin/rekey-test.sh
+      - ./initiator/tunnel-setup.sh:/usr/bin/tunnel-setup.sh
 
   responder:
     build: .
@@ -30,6 +31,7 @@ services:
       - ./responder/capture:/usr/capture
       - ./responder/setup-test.sh:/usr/bin/setup-test.sh
       - ./responder/rekey-test.sh:/usr/bin/rekey-test.sh
+      - ./responder/tunnel-setup.sh:/usr/bin/tunnel-setup.sh
 
 networks:
   vpn-net:

@@ -9,12 +9,13 @@ services:
       vpn-net:
         ipv4_address: 10.200.200.2
     volumes:
+      - ./initiator/capture:/usr/capture
       - ./initiator/swanctl.conf:/etc/swanctl/conf.d/swanctl.conf:ro
       - ./initiator/strongswan.conf:/etc/strongswan.conf:ro
-      - ./initiator/capture:/usr/capture
-      - ./initiator/setup-test.sh:/usr/bin/setup-test.sh
-      - ./initiator/rekey-test.sh:/usr/bin/rekey-test.sh
       - ./initiator/tunnel-setup.sh:/usr/bin/tunnel-setup.sh
+      - ./initiator/tunnel-test.sh:/usr/bin/tunnel-test.sh
+      - ./initiator/rekey-setup.sh:/usr/bin/rekey-setup.sh
+      - ./initiator/rekey-test.sh:/usr/bin/rekey-test.sh
 
   responder:
     build: .
@@ -26,12 +27,13 @@ services:
       vpn-net:
         ipv4_address: 10.200.200.3
     volumes:
+      - ./responder/capture:/usr/capture
       - ./responder/swanctl.conf:/etc/swanctl/conf.d/swanctl.conf:ro
       - ./responder/strongswan.conf:/etc/strongswan.conf:ro
-      - ./responder/capture:/usr/capture
-      - ./responder/setup-test.sh:/usr/bin/setup-test.sh
-      - ./responder/rekey-test.sh:/usr/bin/rekey-test.sh
       - ./responder/tunnel-setup.sh:/usr/bin/tunnel-setup.sh
+      - ./responder/tunnel-test.sh:/usr/bin/tunnel-test.sh
+      - ./responder/rekey-setup.sh:/usr/bin/rekey-setup.sh
+      - ./responder/rekey-test.sh:/usr/bin/rekey-test.sh
 
 networks:
   vpn-net:
